@@ -1,0 +1,36 @@
+.auth-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0px #000;
+  background: #FFFDF5;
+}
+.auth-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.auth-status {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.auth-input {
+  padding: 0.5rem;
+  border: 2px solid #000;
+  font-family: 'Space Grotesk', sans-serif;
+  background: #FFFDF5;
+}
+.auth-btn {
+  padding: 0.5rem;
+  border: 2px solid #000;
+  background: #FFD93D;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  box-shadow: 3px 3px 0px #000;
+  cursor: pointer;
+}
