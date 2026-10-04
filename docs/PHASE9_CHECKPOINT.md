@@ -1,4 +1,8 @@
-﻿# Phase 9 Checkpoint
+> **HISTORICAL RECORD.** This document records the state of the project at the time
+> this phase was checkpointed. It is not the current status. The authoritative
+> current phase status is PROJECT_BIBLE.md Section 3.
+
+# Phase 9 Checkpoint
 
 ## Status
 Phase 0-9 COMPLETE, Phase 10=NOT STARTED

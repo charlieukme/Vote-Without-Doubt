@@ -1,4 +1,8 @@
-﻿# Phase 5 Final Report
+> **HISTORICAL RECORD.** This document records the state of the project at the time
+> this phase was checkpointed. It is not the current status. The authoritative
+> current phase status is PROJECT_BIBLE.md Section 3.
+
+# Phase 5 Final Report
 
 ## A. Current working directory
 C:\Users\aditya prasad\Downloads\voting-sys

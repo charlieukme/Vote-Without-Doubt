@@ -85,7 +85,8 @@ Historical records (per-phase checkpoints and final reports under `docs/`) inten
 | Phase 16 | Final UI + Demo | NOT STARTED |
 | Phase 17 | Final Release | NOT STARTED |
 
-**Current phase:** Phase 10 remediation is complete; Phase 11 has NOT been started.
+**Current phase:** Phase 0 foundation remediation is complete; the last implementation phase is
+Phase 10, which is COMPLETE. Phase 11 has NOT been started.
 **Rule:** Do not begin Phase 11 or later until explicitly instructed.
 
 ### 3.1 Completion Means

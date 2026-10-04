@@ -1,4 +1,8 @@
-﻿# Phase 3 Checkpoint
+> **HISTORICAL RECORD.** This document records the state of the project at the time
+> this phase was checkpointed. It is not the current status. The authoritative
+> current phase status is PROJECT_BIBLE.md Section 3.
+
+# Phase 3 Checkpoint
 
 ## Project Identity
 - Project: AI & Blockchain-Based Secure E-Voting System for College Elections

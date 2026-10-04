@@ -1,4 +1,8 @@
-﻿# Phase 7 Checkpoint
+> **HISTORICAL RECORD.** This document records the state of the project at the time
+> this phase was checkpointed. It is not the current status. The authoritative
+> current phase status is PROJECT_BIBLE.md Section 3.
+
+# Phase 7 Checkpoint
 
 ## Status
 Phase 0-7 COMPLETE, Phase 8=NOT STARTED
