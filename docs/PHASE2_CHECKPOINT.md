@@ -13,7 +13,7 @@
 - **Current Date:** 2026-10-04
 
 ## Project Root
-- **Exact Current Working Directory:** C:\Users\aditya prasad\Downloads\voting-sys
+- **Exact Current Working Directory:** .
 
 ## Baselines
 - Phase 0: COMPLETE (docs/PHASE0_CHECKPOINT.md)
@@ -62,3 +62,29 @@
 - No secrets committed
 
 This checkpoint records Phase 2 completion. Phase 3 not started.
+
+---
+
+## Correction appended 2026-10-04 (after independent audit + remediation)
+
+The verification block above was **not accurate when written**. The independent Phase 2
+implementation audit (`docs/PHASE2_IMPLEMENTATION_AUDIT.md`) found the auth endpoints were not
+functional: `AuthService.request_otp`, `.verify_otp` and `.logout` did not exist, so
+`/api/auth/request-otp`, `/api/auth/verify-otp` and `/api/auth/logout` raised `AttributeError`,
+password + OTP could never reach `AUTHORIZED`, and no session could be revoked. Session rotation
+after OTP verification was absent, and the OTP pepper had a publicly known production fallback.
+
+Phase 2 was remediated and re-verified by execution:
+
+- `venv/Scripts/python -m pytest tests/ -q` → **274 collected, 274 passed, 0 failed, 0 skipped**
+- Phase 2 subset → **65 passed**
+- `python scripts/prove_phase2_auth.py` → **18/18 proof steps**
+- `cd frontend && npm test` → **25 passed**
+- Added `backend/scripts/prove_phase2_auth.py` and four Phase 2 test modules
+- Removed `POST /api/auth/register`, which accepted a caller-supplied `voter_id` and bypassed
+  Phase 3 electoral-roll gating
+- Added the protected `GET /api/auth/session` endpoint
+- Pepper now fails closed in production; production cookie is `__Host-session`
+
+Evidence and the full A–T table: `docs/PHASE2_REMEDIATION_REPORT.md`.
+Current Phase 2 status: **COMPLETE (verified)**, not merely checkpointed.

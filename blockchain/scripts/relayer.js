@@ -9,7 +9,9 @@ async function main() {
   const pk = process.env.RELAYER_PRIVATE_KEY;
   if (!pk) throw new Error("RELAYER_PRIVATE_KEY required");
   const wallet = new ethers.Wallet(pk, provider);
-  const artifact = JSON.parse(fs.readFileSync("../blockchain/artifacts/contracts/EVotingBallotBox.sol/EVotingBallotBox.json"));
+  const path = require("path");
+  const artifactPath = path.resolve(__dirname, "../artifacts/contracts/EVotingBallotBox.sol/EVotingBallotBox.json");
+  const artifact = JSON.parse(fs.readFileSync(artifactPath));
   const abi = artifact.abi;
   const evb = new ethers.Contract(addr, abi, wallet);
   console.log("Relayer ready");

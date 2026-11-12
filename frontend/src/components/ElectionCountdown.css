@@ -1,0 +1,45 @@
+.election-countdown-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  transition: all 0.2s ease-in-out;
+  margin: 0.5rem 0;
+}
+
+.countdown-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.countdown-text {
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+}
+
+/* Scheduled / Before start: Yellow alert */
+.countdown-badge-scheduled {
+  background: var(--neo-yellow, #FFD93D);
+  color: #000000;
+}
+
+/* Open / Active: Neon Green pulse */
+.countdown-badge-open {
+  background: var(--neo-green, #6BCB77);
+  color: #000000;
+}
+
+/* Closed / Past: Neutral muted / red */
+.countdown-badge-closed {
+  background: #E5E7EB;
+  color: #4B5563;
+  border-color: #6B7280;
+  box-shadow: 2px 2px 0px #6B7280;
+}

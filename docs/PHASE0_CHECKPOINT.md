@@ -1,5 +1,10 @@
 # Phase 0 Checkpoint
 
+> **Correction (2026-10-05):** the `test_face_api.py` collection failure recorded by the Phase 0
+> audit was **resolved** during Phase 5 remediation. That file and `test_face_validation.py` were
+> removed and replaced with 131 real-model Phase 5 tests; the full backend suite is 534 passed
+> with no collection errors. See [`PHASE5_CHECKPOINT.md`](./PHASE5_CHECKPOINT.md).
+
 > **HISTORICAL RECORD.** This file is the Phase 0 baseline as it stood when Phase 0 finished.
 > Any phase status, file list, or "next action" statement below describes that moment only and
 > is **not** the current project status.
@@ -20,7 +25,7 @@
 - **Current Date:** 2026-10-04
 
 ## Project Root
-- **Exact Current Working Directory:** C:\Users\aditya prasad\Downloads\voting-sys
+- **Exact Current Working Directory:** .
 
 ## Starting State
 - Project was started from a clean/new directory
@@ -171,7 +176,7 @@ Decisions established at Phase 0:
 
 ## Filesystem Safety
 
-"This project is independent of all previous projects. No previous project code, files, repositories, or implementations were used. All work performed exclusively in C:\Users\aditya prasad\Downloads\voting-sys."
+"This project is independent of all previous projects. No previous project code, files, repositories, or implementations were used. All work performed exclusively in .."
 
 ## Recovery Purpose
 
@@ -182,4 +187,4 @@ This checkpoint exists so that if a later phase introduces a problem, we can ret
 **Checkpoint Created:** 2026-10-04  
 **Phase 0 Status:** COMPLETE (Documentation Only - No Implementation Started)  
 **Next Action:** Phase 1 (only upon explicit instruction)  
-**Project Root:** C:\Users\aditya prasad\Downloads\voting-sys
+**Project Root:** .

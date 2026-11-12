@@ -1,0 +1,39 @@
+Single-database Alembic configuration for the Vote Without Doubt backend.
+
+Authority
+---------
+This `migrations` directory is the **authoritative, versioned schema** for the
+project. `backend/app/schema.sql` is a human-readable reference describing the
+same tables; where the two disagree, the migrations are correct and
+`schema.sql` is the defect.
+
+Phase 1 remediation
+-------------------
+Phase 1 previously had no migration tooling at all: the app called
+`db.create_all()` at startup inside a bare `except: pass`, so schema state could
+neither be reviewed nor reproduced. Flask-Migrate + Alembic is now wired into the
+app factory, `AUTO_CREATE_SCHEMA` defaults to `False`, and the initial revision
+(`initial schema from ORM metadata`) was generated from the ORM models.
+
+Usage
+-----
+    cd backend
+
+    # 1. point at your database
+    #    MySQL (default):  set MYSQL_HOST / MYSQL_PORT / MYSQL_DATABASE /
+    #                      MYSQL_USER / MYSQL_PASSWORD
+    #    SQLite override: export DATABASE_URL=sqlite:///./local.db
+    export FLASK_ENV=development
+
+    # 2. apply the schema
+    venv/Scripts/python -m flask --app "app:create_app" db upgrade
+
+    # 3. confirm the migration state matches the ORM models
+    venv/Scripts/python -m flask --app "app:create_app" db check
+
+Adding a migration
+------------------
+    venv/Scripts/python -m flask --app "app:create_app" db migrate -m "short description"
+
+Always review the generated file in `versions/` before committing it, and run
+`db upgrade` against a scratch database as well as the target one.

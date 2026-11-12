@@ -22,8 +22,9 @@ class User(BaseModel):
     failed_login_attempts = db.Column(db.Integer, default=0, nullable=False)
     locked_until = db.Column(db.DateTime, nullable=True)
     
-    # Link to voter identity (optional, identity plane)
-    voter_id = db.Column(db.String(50), nullable=True, index=True)
+    # Link to voter identity (identity plane). Unique so a single electoral-roll
+    # USN can never back two accounts, even under a concurrent race.
+    voter_id = db.Column(db.String(50), nullable=True, unique=True, index=True)
     
     def __repr__(self):
         return f"<User username={self.username}>"

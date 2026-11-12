@@ -2,7 +2,13 @@
 Flask==3.0.0
 Flask-Cors==4.0.0
 Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.1.0
+alembic==1.20.0
 Werkzeug==3.0.1
+
+# Production WSGI Servers (Phase E.16.1)
+gunicorn==21.2.0
+waitress==3.0.0
 
 # Database
 PyMySQL==1.1.0
@@ -17,12 +23,45 @@ marshmallow==3.20.1
 # Security
 argon2-cffi==23.1.0
 
+# Phase 4 Ethereum signature verification (wallet ownership proof).
+# Required: without it wallet authentication cannot verify signatures and
+# production refuses to start. Verified against Python 3.11.
+eth-account==0.13.7
+
+# Phase 6 Blockchain interaction and backend relayer.
+web3==7.15.0
+
+# Phase 5 face recognition + liveness.
+#
+# insightface supplies the real ArcFace pipeline: SCRFD face detection, the
+# documented five-point facial landmarks, and the ArcFace w600k_r50 recognition
+# model (512-dimensional embeddings).
+#
+# Model weights are NOT on PyPI and are deliberately NOT downloaded at runtime.
+# app/services/face_engine.py fails closed with HTTP 503 if the weights are
+# absent, so they must be provisioned before the service starts. Provision
+# buffalo_l (det_10g.onnx + w600k_r50.onnx) into backend/face_models, verified
+# against the SHA-256 digests in docs/PHASE5_EVALUATION.md. See that document
+# for the exact placement and integrity procedure.
+#
+# Pinning notes:
+#   * opencv-python is pinned to 4.x. insightface 2.1 predates OpenCV 5 and
+#     the 5.x release changed core signatures; 4.10.0.84 is the combination
+#     the engine is exercised against.
+#   * onnxruntime is the CPU inference backend.
+#   * If the ArcFace weights cannot be loaded the face endpoints fail closed
+#     (HTTP 503); they never fall back to a permissive answer.
+insightface==2.1
+onnxruntime==1.30.0
+opencv-python==4.10.0.84
+
 # Testing
 pytest==7.4.3
 pytest-flask==1.3.0
 
 # Utilities
 python-dateutil==2.8.2
+xlsxwriter==3.2.9
 
 # Development
 black==23.11.0

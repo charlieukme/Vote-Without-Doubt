@@ -1,10 +1,382 @@
+/* ==========================================================================
+   VOTING SYSTEM STYLES (NEO-BRUTALIST ARCHITECTURE)
+   ========================================================================== */
+
 .voting-container {
-  padding: 2rem;
-  border: 4px solid #000;
-  background: #F0FFF4;
-  box-shadow: 6px 6px 0px #000;
+  padding: 2.5rem 2rem;
+  border: 4px solid #000000;
+  background: var(--neo-card-surface, #FFFEFA);
+  box-shadow: 8px 8px 0px #000000;
+  text-align: left;
+  max-width: 980px;
+  margin: 0 auto;
 }
-.candidates { margin: 1rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
-button { padding: 0.75rem 1.5rem; border: 3px solid #000; background: #4CAF50; box-shadow: 4px 4px 0px #000; cursor: pointer; }
-.error { color: #D8000C; margin-top: 0.5rem; }
-.receipt { margin-top: 1rem; }
+
+.voting-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: #000000;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.voting-subtitle {
+  font-size: 1rem;
+  color: var(--neo-gray-muted, #4B5563);
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* Mechanical Progress Stepper */
+.voting-stepper {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 0.75rem;
+  background: var(--neo-card-surface, #FFFEFA);
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  border: 2px solid #000000;
+  background: var(--neo-canvas, #F8F6EE);
+  color: var(--neo-gray-muted, #4B5563);
+  text-transform: uppercase;
+}
+
+.step-item.active {
+  background: var(--neo-yellow, #FFD93D);
+  color: #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.step-item.completed {
+  background: var(--neo-violet, #C4B5FD);
+  color: #000000;
+}
+
+/* Voting Step Box */
+.voting-step {
+  background: var(--neo-card-surface, #FFFEFA);
+  border: 3px solid #000000;
+  padding: 2rem;
+  box-shadow: 4px 4px 0px #000000;
+  margin-bottom: 1.5rem;
+}
+
+.voting-step h3 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.voting-step p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+/* Voting Buttons */
+.voting-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 900;
+  padding: 0.75rem 1.75rem;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.voting-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.voting-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.voting-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.primary-btn {
+  background: var(--neo-yellow, #FFD93D);
+  color: #000000;
+}
+
+.primary-btn:hover:not(:disabled) {
+  background: #FFE066;
+}
+
+.secondary-btn {
+  background: var(--neo-violet, #C4B5FD);
+  color: #000000;
+}
+
+/* Factor Checklist */
+.factor-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.factor-checklist li {
+  padding: 1rem 1.25rem;
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.factor-ok {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.factor-pending {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+/* Candidate Selection Cards */
+.candidates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.candidate-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border: 3px solid #000000;
+  background: var(--neo-card-surface, #FFFEFA);
+  box-shadow: 4px 4px 0px #000000;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  user-select: none;
+}
+
+.candidate-card:hover {
+  background: #FFF7D6;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.candidate-card.selected {
+  background: var(--neo-yellow, #FFD93D);
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  transform: translate(-1px, -1px);
+}
+
+.candidate-card input[type="radio"] {
+  width: 1.4rem;
+  height: 1.4rem;
+  accent-color: #000000;
+  cursor: pointer;
+}
+
+.candidate-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.candidate-name {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.candidate-party {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--neo-gray-muted, #4B5563);
+}
+
+/* Null Ballot Card */
+.null-ballot-card {
+  border-style: dashed;
+  background: var(--neo-canvas, #F8F6EE);
+}
+
+.null-ballot-card.selected {
+  background: var(--neo-violet, #C4B5FD);
+  border-style: solid;
+}
+
+/* Confirmation Box */
+.confirmation-box {
+  background: var(--neo-canvas, #F8F6EE);
+}
+
+.security-notice {
+  background: #FEF9C3;
+  border: 3px dashed #000000;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Progress & Submitting */
+.progress-box {
+  text-align: center;
+  background: var(--neo-cream, #FFFDF5);
+}
+
+.status-badge {
+  display: inline-block;
+  background: #000000;
+  color: #FFFFFF;
+  font-weight: 900;
+  padding: 0.5rem 1.25rem;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+/* Mechanical Square Spinner */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #000000;
+  border-top: 4px solid var(--neo-yellow, #FFD93D);
+  border-radius: 0;
+  animation: spin 0.8s linear infinite;
+  margin: 1.5rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.subtext {
+  font-size: 0.875rem;
+  color: #4B5563;
+  font-weight: 600;
+}
+
+/* Official Physical Receipt Aesthetic */
+.receipt-box {
+  background: #FFFFFF;
+  border: 4px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: #000000;
+  background: #D1FAE5;
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.receipt-details {
+  background: var(--neo-cream, #FFFDF5);
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.receipt-details h4 {
+  font-size: 1.15rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 0.35rem;
+}
+
+.receipt-code code {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+  padding: 0.4rem 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-family: monospace;
+  display: inline-block;
+  margin-top: 0.25rem;
+  word-break: break-all;
+}
+
+.receipt-explanation {
+  font-size: 0.875rem;
+  color: #4B5563;
+  margin-top: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* Errors */
+.error-box {
+  background: #FEE2E2;
+}
+
+.error-banner {
+  background: var(--neo-red, #FF6B6B);
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  color: #000000;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+  font-weight: 800;
+}

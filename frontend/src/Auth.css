@@ -1,36 +1,218 @@
+/* ==========================================================================
+   AUTHENTICATION & WALLET COMPONENT STYLES (NEO-BRUTALIST)
+   ========================================================================== */
+
 .auth-container {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  border: 3px solid #000;
-  box-shadow: 6px 6px 0px #000;
-  background: #FFFDF5;
+  margin-top: 1.5rem;
+  padding: 2rem;
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  background: var(--neo-card-surface, #FFFEFA);
 }
+
 .auth-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #000000;
 }
+
 .auth-status {
-  margin-bottom: 1rem;
-  font-weight: 600;
+  margin-bottom: 1.25rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.85rem;
+  border: 2px solid #000000;
+  background: var(--neo-yellow, #FFD93D);
+  box-shadow: 2px 2px 0px #000000;
 }
+
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
+
+.auth-hint {
+  font-size: 0.925rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--neo-gray-muted, #4B5563);
+}
+
 .auth-input {
-  padding: 0.5rem;
-  border: 2px solid #000;
-  font-family: 'Space Grotesk', sans-serif;
-  background: #FFFDF5;
-}
-.auth-btn {
-  padding: 0.5rem;
-  border: 2px solid #000;
-  background: #FFD93D;
-  font-family: 'Space Grotesk', sans-serif;
+  min-height: 44px;
+  padding: 0.65rem 0.85rem;
+  border: 3px solid #000000;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
-  box-shadow: 3px 3px 0px #000;
+  font-size: 0.95rem;
+  background: #FFFFFF;
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-input:focus-visible {
+  outline: 3px solid #000000;
+  outline-offset: 2px;
+}
+
+.auth-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65rem 1.25rem;
+  border: 3px solid #000000;
+  background: var(--neo-yellow, #FFD93D);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  box-shadow: 4px 4px 0px #000000;
   cursor: pointer;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.auth-btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+  background: #FFE066;
+}
+
+.auth-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+.auth-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.auth-btn:focus-visible {
+  outline: 3px solid #000000;
+  outline-offset: 2px;
+}
+
+.error {
+  margin-top: 1rem;
+  font-weight: 800;
+  color: #000000;
+  background: var(--neo-red, #FF6B6B);
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  padding: 0.75rem 1rem;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0px #000;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 2px 6px;
+  background: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+.password-toggle-btn:hover {
+  background: var(--neo-yellow, #FFD93D);
+}
+
+.password-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 0.35rem;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.checklist-item.valid {
+  color: #047857;
+}
+
+.checklist-item.invalid {
+  color: var(--neo-gray-muted, #4B5563);
+}
+
+.strength-bar-container {
+  display: flex;
+  gap: 4px;
+  height: 8px;
+  margin: 0.35rem 0;
+}
+
+.strength-segment {
+  flex: 1;
+  background: #E5E7EB;
+  border: 2px solid #000000;
+  height: 100%;
+}
+
+.strength-segment.active-weak {
+  background: var(--neo-red, #FF6B6B);
+}
+
+.strength-segment.active-medium {
+  background: var(--neo-yellow, #FFD93D);
+}
+
+.strength-segment.active-strong {
+  background: #10B981;
+}
+
+.reg-stepper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.reg-step-pill {
+  padding: 0.35rem 0.65rem;
+  border: 2px solid #000;
+  font-weight: 800;
+  font-size: 0.8rem;
+  background: #FFF;
+  box-shadow: 2px 2px 0px #000;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.reg-step-pill.active {
+  background: var(--neo-yellow, #FFD93D);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000;
+}
+
+.reg-step-pill.completed {
+  background: var(--neo-violet, #C4B5FD);
 }

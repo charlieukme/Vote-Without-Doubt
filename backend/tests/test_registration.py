@@ -40,7 +40,8 @@ def test_csv_invalid_email():
     assert len(errors) > 0
 
 
-def test_registration_check_not_found():
+def test_registration_check_not_found(db):
+    """Uses the shared `db` fixture: the app no longer creates tables implicitly."""
     app = create_app('testing')
     client = app.test_client()
     res = client.post('/api/registration/check', json={'usn': 'NONEXIST'})

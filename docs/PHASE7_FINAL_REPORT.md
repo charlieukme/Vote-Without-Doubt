@@ -1,108 +1,60 @@
-> **HISTORICAL RECORD.** This document records the state of the project at the time
-> this phase was checkpointed. It is not the current status. The authoritative
-> current phase status is PROJECT_BIBLE.md Section 3.
+> **HISTORICAL RECORD.** This document records the state of Phase 7 after remediation.
+> The authoritative current phase status is PROJECT_BIBLE.md Section 3.
 
-# Phase 7 Final Report
+# Phase 7 Final Report (Remediated)
 
-## A. Current working directory
-C:\Users\aditya prasad\Downloads\voting-sys
+## A. Working Directory
+.
 
-## B. Phase 7 starting baseline
-Phases 0-6 COMPLETE. All prior tests passing.
+## B. Phase 7 Starting Baseline
+Phases 0-4 PASS; Phase 5 PARTIAL by governance; Phase 6 PASS.
+Phase 7 initial audit failed on 10 security findings (F-7.1 to F-7.10).
 
-## C. Voting authorization
-Short-lived authorization with factors (wallet/face), election/session bound, single-use, consumed on submit.
+## C. Multi-Factor Voting Authorization (F-7.1)
+Requires authenticated session, election authorization, genuine server-side Phase 4 wallet verification, and genuine server-side Phase 5 biometric liveness verification. Session binding enforced (`va.session_id == session_id`). Client cannot assert factor results.
 
-## D. Wallet integration
-Phase 4 wallet auth reused; candidate never in signature.
+## D. Real Relayer Integration (F-7.2)
+Integrated real Phase 6 `Relayer` into the voting path. Executes cryptographic queue shuffling (`secrets.SystemRandom().shuffle`), broadcasts `castBallot` to Ganache, and awaits mined transaction receipt (`status == 1`) before marking `FINALIZED`. Failed transactions transition to `FAILED` and are never finalized.
 
-## E. Face/liveness integration
-Phase 5 reused; no biometric data in ballot.
+## E. Status Endpoint Model Correction (F-7.3)
+Query corrected to `BallotRecord.query.filter_by(...).order_by(BallotRecord.id.desc()).first()`. Verified against all states (`NONE`, `QUEUED`, `SUBMITTED`, `CONFIRMED`, `FINALIZED`, `FAILED`).
 
-## F. Election availability
-Basic flow; server validates authorization.
+## F. Revoting Prohibition / Phase 6 Boundary (F-7.4)
+Enforces strictly `sequence = 1` and rejects duplicate submissions for the same election and pseudonym with HTTP 409 `BALLOT_ALREADY_CAST`. All Phase 9 sequence increment logic removed.
 
-## G. Candidate selection
-UI with candidate list; server validates candidate.
+## G. Frontend UI Integration (F-7.5)
+`Voting.jsx` imported and rendered in `App.jsx`. Dynamic candidate loading from backend API. Live status polling across intermediate states. Strict guard preventing premature "Vote recorded" messages. Receipt shown only after finalization.
 
-## H. Candidate validation
-Server validates candidate belongs to election.
+## H. Comprehensive Test Suite (F-7.6)
+Rewrote `test_voting.py` to cover authorization lifecycle, factor requirements, candidate validation, revoting rejection, real relayer processing, status queries, and privacy invariants (21 passed). Added `votingFlow.test.mjs` (16 passed).
 
-## I. Pseudonym derivation
-HMAC-SHA256 with election key; deterministic per (user,election), different per election/user.
+## I. Section 8.6 HMAC Receipt (F-7.7)
+Conforms to Section 8.6 HMAC receipt specification. Generated only upon `FINALIZED` state. Contains no candidate choice, pseudonym, or wallet address.
 
-## J. Pseudonym key management
-Derived from env secret; never exposed to frontend; only in ballot plane.
+## J. Election & Candidate Bounds Validation (F-7.8)
+Server verifies election existence, `ACTIVE` status, start/end time window, not cancelled, and candidate index `0 <= candidate < candidate_count`.
 
-## K. Ballot database
-ballot_queue (ballot plane), no identity FKs/IDs.
+## K. Rate Limiting and Audit Logging (F-7.9)
+Enforced rate limiting and sanitized security event logging via `AuditLogger` for all authorization, queuing, and finalization events.
 
-## L. Ballot state machine
-QUEUED -> SUBMITTED -> CONFIRMED -> FINALIZED (stub relayer).
+## L. Database Unique Constraint (F-7.10)
+Added unique constraint `uq_ballot_queue_election_pseudonym` on `('election_id', 'pseudonym')` with migration `7a1b2c3d4e5f`. Verified zero schema drift.
 
-## M. Ballot queue
-Enqueued atomically with authorization consumption.
+## M. Test & Verification Results
+- `backend/` full suite: 565 passed, 0 failed
+- `test_voting.py`: 21 passed, 0 failed
+- `frontend/` suite: 119 passed, 0 failed
+- `prove_phase7_voting.py`: 19/19 checks passed against live Ganache
+- Hardhat tests: 9 passed, 0 failed
+- Phase 6 Ganache proof: 119/119 assertions held
 
-## N. Idempotency
-Prevents duplicate QUEUED for same election/pseudonym; authorization single-use.
-
-## O. Relayer
-Backend relayer stub for Phase 7; blockchain relayer script scaffolded.
-
-## P. Blockchain submission
-Integrated via relayer path (stubbed tx).
-
-## Q. Blockchain confirmation
-Confirmation/finalization handled in stub.
-
-## R. Finalization
-Idempotent by design.
-
-## S. Receipt
-Generated after submit; contains no candidate/pseudonym/tx hash/queue ID.
-
-## T. Failure handling
-Auth/submit validated; duplicate handled.
-
-## U. Privacy controls
-Strict identity/ballot separation maintained; no candidate in signatures; no pseudonym/biometrics returned to client.
-
-## V. Audit integration
-Extends existing audit foundation (sanitized events).
-
-## W. Frontend implementation
-Voting.jsx integrated in App.jsx (Neo-Brutalist).
-
-## X. Security testing
-Auth required for all voting endpoints; basic validation.
-
-## Y. End-to-end testing
-PASS - core flow via UI/API paths verified.
-
-## Z. Tests and exact results
-- Phases 1-5: 36 passed
-- Phase 6 blockchain: 7 passed
-- Phase 7: 6 passed (test_voting.py)
-- Total: 49 passed
-
-## AA. Documentation/checkpoint
-PHASE7_CHECKPOINT.md, PROJECT_BIBLE.md updated.
-
-## AB. Known limitations
-Relayer stub (no actual on-chain tx submission in full flow yet); minimal election config; receipt HMAC not fully specified per doc but privacy-preserving.
-
-## AC. Features deferred
-Advanced privacy hardening, revote UX, full relayer worker, reconciliation, closing audit, public verifier (Phase 8+).
-
-## AD. Complete Phase 7 status
-PHASE 0 = COMPLETE
-PHASE 1 = COMPLETE
-PHASE 2 = COMPLETE
-PHASE 3 = COMPLETE
-PHASE 4 = COMPLETE
-PHASE 5 = COMPLETE
-PHASE 6 = COMPLETE
-PHASE 7 = COMPLETE
-PHASE 8 = NOT STARTED
-
-**Stop after Phase 7 - COMPLETE**
+## N. Complete Phase Status
+- PHASE 0: PASS
+- PHASE 1: PASS
+- PHASE 2: PASS
+- PHASE 3: PASS
+- PHASE 4: PASS
+- PHASE 5: PARTIAL (preserved by governance)
+- PHASE 6: PASS
+- PHASE 7: REMEDIATION COMPLETE — READY FOR INDEPENDENT RE-AUDIT
+- PHASE 8+: NOT STARTED / DEFERRED

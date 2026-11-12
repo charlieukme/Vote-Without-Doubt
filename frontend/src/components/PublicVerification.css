@@ -1,0 +1,309 @@
+/* ==========================================================================
+   PUBLIC VERIFICATION COMPONENT STYLES (NEO-BRUTALIST)
+   Phase 12 Independent Public Verification & Results
+   ========================================================================== */
+
+.verification-card {
+  margin-top: 1.5rem;
+  background: var(--neo-cream, #FFFDF5);
+  border: 4px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  padding: 2rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+
+.election-selector-group {
+  margin-bottom: 2rem;
+  background: #FFFFFF;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  padding: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.input-row .input-field {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.65rem 0.85rem;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 3px solid #000000;
+  background: #FFFFFF;
+  border-radius: 0;
+}
+
+/* Verification Status Banner */
+.verification-status-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--neo-yellow, #FFD93D);
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  margin-bottom: 1.75rem;
+}
+
+.election-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.election-meta {
+  margin: 0.35rem 0 0 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.badge-verdict {
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 0.4rem 0.85rem;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+  text-transform: uppercase;
+}
+
+.badge-verified {
+  background-color: var(--neo-green, #10B981);
+  color: #000000;
+}
+
+.badge-warning {
+  background-color: var(--neo-red, #FF6B6B);
+  color: #000000;
+}
+
+/* Detail Sections */
+.detail-section {
+  padding: 1.5rem;
+  background: #FFFFFF;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+  margin: 0 0 1.25rem 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000000;
+  border-bottom: 3px solid #000000;
+  padding-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.grid-params {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  background: var(--neo-cream, #FFFDF5);
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.param-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #4B5563;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+.param-value {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #000000;
+  word-break: break-all;
+}
+
+/* Results Section */
+.results-summary-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.summary-pill {
+  display: flex;
+  flex-direction: column;
+  background: var(--neo-cream, #FFFDF5);
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  flex: 1;
+  min-width: 140px;
+}
+
+.summary-pill span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #4B5563;
+}
+
+.summary-pill strong {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #000000;
+  margin-top: 0.2rem;
+}
+
+.candidate-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.candidate-result-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 140px;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--neo-cream, #FFFDF5);
+  padding: 0.85rem 1.25rem;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+}
+
+.candidate-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate-name {
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #000000;
+}
+
+.candidate-dept {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #4B5563;
+}
+
+.candidate-tally-bar-container {
+  background: #FFFFFF;
+  height: 18px;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+  overflow: hidden;
+}
+
+.candidate-tally-bar {
+  background: var(--neo-yellow, #FFD93D);
+  height: 100%;
+  border-right: 2px solid #000000;
+  transition: width 0.3s ease;
+}
+
+.candidate-votes-wrap {
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.candidate-votes {
+  font-weight: 900;
+  color: #000000;
+}
+
+.candidate-pct {
+  color: #4B5563;
+  font-weight: 700;
+  margin-left: 0.35rem;
+}
+
+.blockchain-match-notice {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #065F46;
+  background: #D1FAE5;
+  border: 2px solid #000000;
+  padding: 0.75rem 1rem;
+}
+
+/* CLI Code Command Box */
+.cli-command {
+  background: #000000;
+  padding: 0.85rem 1.25rem;
+  border: 3px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #10B981;
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.subtext {
+  font-size: 0.875rem;
+  color: #4B5563;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+  line-height: 1.45;
+}
+
+.tamper-details-list {
+  margin: 0.75rem 0 0 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+  .candidate-result-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .candidate-votes-wrap {
+    text-align: left;
+  }
+}

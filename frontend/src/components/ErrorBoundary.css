@@ -1,0 +1,78 @@
+/* Error boundary - Phase 1 frontend foundation.
+   Neo-Brutalism: hard edges, thick black border, hard shadow, no blur,
+   no gradient, no rounded corners. Matches the existing App.css panel style. */
+
+.error-boundary {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #FFFDF5;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+.error-boundary__panel {
+  background: #FFFDF5;
+  border: 4px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  padding: 2.5rem 2rem;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+}
+
+.error-boundary__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+}
+
+.error-boundary__message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000000;
+  margin: 0 0 2rem 0;
+  font-weight: 500;
+}
+
+.error-boundary__retry {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #000000;
+  background: #C4B5FD;
+  border: 4px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  padding: 0.75rem 1.75rem;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.error-boundary__retry:hover {
+  background: #000000;
+  color: #FFFDF5;
+}
+
+.error-boundary__retry:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #000000;
+}
+
+.error-boundary__retry:focus-visible {
+  outline: 4px solid #000000;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error-boundary__retry:active {
+    transform: none;
+  }
+}

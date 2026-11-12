@@ -71,5 +71,38 @@ desktop.ini
 *.dump
 *.ibd
 data/
+instance/
+*.db
 *.sqlite
 *.sqlite3
+
+# ---------------------------------------------------------------------------
+# Local subsystem backups & temporary scratch files
+# ---------------------------------------------------------------------------
+.backups/
+*.bak
+*.bak.*
+*.fix2.bak
+scratch/
+backend/scratch/
+.freebuff/
+backend/benchmark_results/
+backend/face_models/
+blockchain/.hardhat_data/
+VWD_Report_Evidence/
+
+# ---------------------------------------------------------------------------
+# Internal audit reconnaissance transcripts & developer diagnostic probes
+# ---------------------------------------------------------------------------
+COMPREHENSIVE_RECONNAISSANCE.md
+FINAL_RECONNAISSANCE_REPORT.md
+RECONNAISSANCE_REPORT.md
+VWD_COMPLETE_REPOSITORY_INVESTIGATION.md
+backend/probe_face.py
+blockchain/deferred_phase9/
+docs/PHASE6_GANACHE_PROOF.txt
+
+# ---------------------------------------------------------------------------
+# Runtime uploaded candidate media (sample assets remain in frontend/public)
+# ---------------------------------------------------------------------------
+backend/app/uploads/
